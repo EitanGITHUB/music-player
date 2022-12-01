@@ -15,21 +15,22 @@
           <%#= i %> 
         <%#  will output the numbers 1-10 %>
         <%# } %>
-        <% var previewJson = JSON.parse(preview) %>
         <!--<h1><%#= previewJson['Video'][0]['Title'] %></h1>
-        <h1><%#= Object.keys(previewJson['Video'])%></h1>-->
-
-     <% if ( locals.preview) { %>
-        <% for(key in previewJson['Video']) { %>
-          <% if(previewJson['Video'].hasOwnProperty(key)) { //make another for loop for all the keys%>
-            <div>
-                <a href="<%= previewJson['Video'][key]['Url'] %>">
-                <p><%= previewJson['Video'][key]['Title'] %></p>
-                <img src="<%= previewJson['Video'][key]['Thumbnail'] %>">
+            <h1><%#= Object.keys(previewJson['Video'])%></h1>-->
+    
+    <% var previewJson = JSON.parse(preview) %>
+    <% if ( locals.preview) { %>
+        <% for(key in previewJson['video']) { %>
+            <% if(previewJson['video'].hasOwnProperty(key)) { //make another for loop for all the keys%> <!--make the href lead to the play page with the current id (add the ids to the json)-->
+                <div>
+                <!--<a href="<%#= previewJson['Video'][key]['Url'] %>">-->
+                <a href="/play?v=<%= previewJson['video'][key]['id'] %>">
+                <p><%= previewJson['video'][key]['title'] %></p>
+                <img src="<%= previewJson['video'][key]['thumbnail'] %>">
                 </a> 
-            </div>
-          <% } %>
+                </div>
+            <% } %>
         <% } %>
-      <% } %>
+    <% } %>
 </body>
 </html>

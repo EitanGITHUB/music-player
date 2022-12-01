@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<body>
+    <div>
+          <!-- <audio controls="" autoplay="" name="media">
+            <source src="/audio?v=<%= locals.videoQuery %>" type="audio/ogg">
+        </audio> -->
+        <img src="<%=videoDetails['thumbnails']['high']['url']%>">
+        <audio controls="" autoplay="" onloadstart="this.volume=0.1" name="media">
+            <source src="<%= audioUrl %>" type="audio/ogg">
+        </audio>
+        <h2><%=videoDetails['title']%></h2>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAA8CAMAAAD8KXLNAAAAulBMVEUAAACPw/ePw/lgqvVfqvaUx/mQxPhfqfWjz/lfqfVfqvZgp/9cp/ZfqvZgqvaayPpTpPVfqvVjpvNgqfaQw/mjzvq42PdfqvZgqvZiq/ZwsveRxflkqe9rsPdcqPZeqPRorvfN5fzw9/5bp/Z2tvdZoOqTxvqCuvPj8P7+//+QxPmBvfl3su+Pw/lWpfWx1fuJwPlUpPWVxvnp8/7////4+/9ure3C3/uq0fvb7P1usffn8v15tfFMmOceGILeAAAAF3RSTlMAIdHm7ijJ+JH8eQeTzaw68foX1Ll9kGZdllAAAAEQSURBVHgB7dZVcsMwFIVhhTkp5krmMJcZ9r+sMl7PEczopfC/f7ZFtoUQreZuWVepJ3g73VKtoSvaKzDS6kp9abSsMtQumQ1HtYbZcCSl2TBkZRiyNU+o4m6WxYqzeUIFd/P0eO7m6fGsDUNmQ+lsypA0ll6E4XdkYSbrTTj96AlJczSJ1rOP7vrQsFt9dl/HBnX8y00Cg0YFqBtkKJuDbgdEwMSLM9Cp9GnUCWoD54AOYH7XZwRDhtQRagVNfA5azKXX9RmirpGRaowKfM6bt/NDekPZYa6rIAEGz/VwNfJvskGuy3FimAOVzzhvlA+Z//f1vyltu5p90Sw5mq2eEG1H03759e+Ua7aVO82WeASxdDP0M8Z9fAAAAABJRU5ErkJggg=="/>
+        
+        <% var previewJson = JSON.parse(preview) %>
+        <% if ( locals.preview) { %>
+            <% for(key in previewJson['video']) { %>
+                <% if(previewJson['video'].hasOwnProperty(key)) { //make another for loop for all the keys%> 
+                    <div>
+                    <a href="/play?v=<%= previewJson['video'][key]['id'] %>">
+                    <p><%= previewJson['video'][key]['title'] %></p>
+                    <img src="<%= previewJson['video'][key]['thumbnail'] %>">
+                    </a> 
+                    </div>
+                <% } %>
+            <% } %>
+        <% } %>
+    </div>
+</body>
+</html>
