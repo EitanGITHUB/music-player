@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<body>
+    <%#- JSON.stringify(locals.responseJSON) || "defualt"%>
+    <%# var previewJson = JSON.parse(locals.preview) %>
+    <%# previewJson.Video[0].Title%>
+    <!--<%# for(var i = 0; i < locals.videoTitles.size; i++) { %>
+        <div>
+            <h1>video title: <%#locals.videoTitles[i]%></h1>
+            <a href="<%#locals.videoUrls[i]%>"></a>
+        </div>
+        
+     <%# } %>-->
+    
+     <%# for (var i =1; i <=10;  i++ ) { %>
+          <%#= i %> 
+        <%#  will output the numbers 1-10 %>
+        <%# } %>
+        <% var previewJson = JSON.parse(preview) %>
+        <!--<h1><%#= previewJson['Video'][0]['Title'] %></h1>
+        <h1><%#= Object.keys(previewJson['Video'])%></h1>-->
+
+     <% if ( locals.preview) { %>
+        <% for(key in previewJson['Video']) { %>
+          <% if(previewJson['Video'].hasOwnProperty(key)) { //make another for loop for all the keys%>
+            <div>
+                <a href="<%= previewJson['Video'][key]['Url'] %>">
+                <p><%= previewJson['Video'][key]['Title'] %></p>
+                <img src="<%= previewJson['Video'][key]['Thumbnail'] %>">
+                </a> 
+            </div>
+          <% } %>
+        <% } %>
+      <% } %>
+</body>
+</html>
